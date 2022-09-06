@@ -1,4 +1,16 @@
 body {
     background-color: black;
     color: white;
+    text-align: center;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+    display: inline-block;
 }

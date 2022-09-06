@@ -9,7 +9,9 @@ const PORT = 3000
 
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
+// allows data to be added to the db
 app.use(express.urlencoded({extended:false}))
+// allows styles.
 app.use(express.static(__dirname + '/public'))
 
 app.listen(PORT, ()=> {
@@ -17,8 +19,8 @@ app.listen(PORT, ()=> {
 })
 
 app.get('/', (req, res) => {
-    // res.render('index')
-    res.send('Welcome to the Dino Crud app')
+    res.render('home')
+    // res.send('Welcome to the Dino Crud app')
 
 })
 
@@ -35,10 +37,10 @@ app.get('/dinosaurs', (req, res) => {
     // read file
     const dinoData = readDinoFile()
     // res.send('show all dinos')
-    res.json(dinoData)
+    res.render('index', {dinos: dinoData})
 })
 app.get('/dinosaurs/new', (req, res) => {
-    res.send('show a form to create a new dino')
+    res.render('dinos/new')
 })
 
 app.post('/dinosaurs', (req, res) => {
