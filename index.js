@@ -42,6 +42,8 @@ app.get('/dinosaurs/new', (req, res) => {
 app.post('/dinosaurs', (req, res) => {
     // do not render a template. 
     // redirect to where you can find a template.
+    const dinoData = readDinoFile()
+    console.log(req.body)
     res.send('creates a new dino in the db')
 })
 
