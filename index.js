@@ -1,13 +1,15 @@
+const { urlencoded } = require('body-parser')
 const express = require('express')
 const ejsLayouts = require('express-ejs-layouts')
 const fs = require('fs')
-
+ 
 const app = express()
 const PORT = 3000
 
 
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
+app.use(express.urlencoded({extended:false}))
 app.use(express.static(__dirname + '/public'))
 
 app.listen(PORT, ()=> {
@@ -44,7 +46,10 @@ app.post('/dinosaurs', (req, res) => {
     // redirect to where you can find a template.
     const dinoData = readDinoFile()
     console.log(req.body)
-    res.send('creates a new dino in the db')
+    dinoData.push(req.body)
+    fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData))
+
+    res.redirect('/dinosaurs')
 })
 
 app.get('/dinosaurs/:id', (req, res) => {
