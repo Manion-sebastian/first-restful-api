@@ -37,7 +37,7 @@ app.get('/dinosaurs', (req, res) => {
     // read file
     const dinoData = readDinoFile()
     // res.send('show all dinos')
-    res.render('index', {dinos: dinoData})
+    res.render('dinos/index', {dinos: dinoData})
 })
 app.get('/dinosaurs/new', (req, res) => {
     res.render('dinos/new')
