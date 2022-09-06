@@ -21,6 +21,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/dinosaurs', (req, res) => {
+    // use fs to read the dino.json 
+    // parse the file into json data
+    // send the dino info to the client. 
+    const dinosaurs = fs.readFileSync('./dinosaurs.json')
+    const dinoData = JSON.parse(dinosaurs)
+    console.log(dinoData)
     res.send('show all dinos')
 })
 app.get('/dinosaurs/new', (req, res) => {
