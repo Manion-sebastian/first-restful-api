@@ -3,7 +3,8 @@ const router = express.Router()
 const fs = require('fs')
 
 router.get('/', (req, res) => {
-    res.render('dhome')
+    res.render('dinos/dhome')
+    // res.send('hello')
 })
 
 const readDinoFile = () => {
@@ -29,11 +30,11 @@ router.post('/dinosaurs', (req, res) => {
     // do not render a template. 
     // redirect to where you can find a template.
     const dinoData = readDinoFile()
-    console.log(req.body)
     dinoData.push(req.body)
+    console.log(req.body)
     fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData))
 
-    res.redirect('/dinosaurs')
+    res.redirect('/dinos/dinosaurs')
 })
 
 router.get('/dinosaurs/:id', (req, res) => {

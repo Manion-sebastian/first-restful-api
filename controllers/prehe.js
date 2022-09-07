@@ -3,7 +3,7 @@ const router = express.Router()
 const fs = require('fs')
 
 router.get('/', (req, res) => {
-    res.render('phome')
+    res.render('prehe/phome')
 })
 
 
@@ -20,7 +20,7 @@ router.get('/prehes', (req, res) => {
     res.render('prehe/indexp', {prehes: preheData})
 })
 router.get('/prehes/newp', (req, res) => {
-    res.render('prehes/newp')
+    res.render('prehe/newp')
 })
 
 router.post('/prehes', (req,res) => {
@@ -28,7 +28,7 @@ router.post('/prehes', (req,res) => {
     preData.push(req.body)
     fs.writeFileSync('./prehe.json', JSON.stringify(preData))
 
-    res.redirect('/prehe')
+    res.redirect('/prehe/prehes')
 })
 
 router.get('/prehe/:id', (req, res) => {

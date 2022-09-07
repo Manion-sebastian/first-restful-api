@@ -14,3 +14,8 @@ a {
     text-decoration: none;
     display: inline-block;
 }
+
+img {
+    height: 400px;
+    width: 400px;
+}
