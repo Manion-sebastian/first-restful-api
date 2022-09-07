@@ -1,6 +1,7 @@
 const { urlencoded } = require('body-parser')
 const express = require('express')
 const ejsLayouts = require('express-ejs-layouts')
+const methodOverride = require('method-override')
 const fs = require('fs')
  
 const app = express()
@@ -11,6 +12,7 @@ app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 // allows data to be added to the db
 app.use(express.urlencoded({extended:false}))
+app.use(methodOverride("_method"))
 // allows styles.
 app.use(express.static(__dirname + '/public'))
 app.use('/dinos', require('./controllers/dino'))

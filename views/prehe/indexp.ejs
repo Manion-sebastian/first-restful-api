@@ -1,5 +1,15 @@
+<h2>
+    Index of all Prehes:
+</h2>
+
 <ul>
-    <% prehes.forEach(pre => { %>
+    <% prehes.forEach((pre, idx) => { %>
         <li><%= pre.type %> is this <img src="<%= pre.img_url%>" alt="<%= pre.type %>"></li>
+        <a href="/prehe/prehes/edit/<%= idx %>">EDIT</a>
+        <form method="POST" action="/prehe/prehes/<%= idx %>/?_method=DELETE">
+            <input type="submit" value="Delete">
+        </form>
     <% }) %>
 </ul>
+
+<a href="/prehe/prehes/newp">Make Another</a>
